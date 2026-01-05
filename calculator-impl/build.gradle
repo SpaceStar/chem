@@ -1,36 +1,18 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.devtools.ksp'
-    id 'kotlin-parcelize'
+apply {
+    from "$rootDir/gradle/library.gradle"
+    plugin 'kotlin-kapt'
+    plugin 'com.google.devtools.ksp'
+    plugin 'kotlin-parcelize'
+    plugin 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
     namespace 'ru.spacestar.calculator_impl'
-    compileSdk target_sdk
 
     defaultConfig {
-        minSdk min_sdk
-        targetSdk target_sdk
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = '17'
-    }
     buildFeatures {
         compose true
     }

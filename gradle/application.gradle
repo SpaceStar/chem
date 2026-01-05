@@ -1,0 +1,4 @@
+apply {
+    plugin 'com.android.application'
+    from "$rootDir/gradle/module.gradle"
+}

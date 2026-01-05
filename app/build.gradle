@@ -1,5 +1,5 @@
 apply {
-    from "$rootDir/gradle/module.gradle"
+    from "$rootDir/gradle/application.gradle"
     plugin 'kotlin-kapt'
     plugin 'kotlin-parcelize'
     plugin 'com.google.dagger.hilt.android'
