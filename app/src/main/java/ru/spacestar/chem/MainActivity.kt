@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.AnimationConstants
+import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
@@ -18,8 +19,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.spacestar.calculator_api.CalculatorFeatureApi
 import ru.spacestar.core_ui.theme.ChemTheme
@@ -53,18 +54,18 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                     ) {
-                        val navController = rememberAnimatedNavController()
-                        AnimatedNavHost(
+                        val navController = rememberNavController()
+                        NavHost(
                             navController = navController,
                             startDestination = calculatorApi.route(),
-                            enterTransition = { slideInHorizontally() },
+                            enterTransition = {
+                                slideInHorizontally(animationSpec = tween()) { it } },
                             exitTransition = {
-                                fadeOut(animationSpec = tween(
-                                    durationMillis = 1,
+                                fadeOut(animationSpec = snap(
                                     delayMillis = AnimationConstants.DefaultDurationMillis
                                 )) },
                             popEnterTransition = { EnterTransition.None },
-                            popExitTransition = { slideOutHorizontally() },
+                            popExitTransition = { slideOutHorizontally { it } },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f)
