@@ -1,6 +1,5 @@
 apply {
     from "$rootDir/gradle/library.gradle"
-    plugin 'kotlin-kapt'
     plugin 'com.google.devtools.ksp'
     plugin 'kotlin-parcelize'
     plugin 'org.jetbrains.kotlin.plugin.compose'
@@ -15,9 +14,6 @@ android {
 
     buildFeatures {
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_compiler_version
     }
 }
 
@@ -50,7 +46,7 @@ dependencies {
     // hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_nav_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    ksp "com.google.dagger:hilt-compiler:$hilt_version"
 
     // room
     implementation "androidx.room:room-runtime:$room_version"

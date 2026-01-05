@@ -1,6 +1,6 @@
 apply {
     from "$rootDir/gradle/application.gradle"
-    plugin 'kotlin-kapt'
+    plugin 'com.google.devtools.ksp'
     plugin 'kotlin-parcelize'
     plugin 'com.google.dagger.hilt.android'
     plugin 'org.jetbrains.kotlin.plugin.compose'
@@ -30,9 +30,6 @@ android {
     buildFeatures {
         buildConfig true
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_compiler_version
     }
     packagingOptions {
         resources {
@@ -69,7 +66,7 @@ dependencies {
     // hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_nav_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    ksp "com.google.dagger:hilt-compiler:$hilt_version"
 
     // ads
     implementation 'com.yandex.android:mobileads:5.8.0'
@@ -83,9 +80,4 @@ dependencies {
 
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes true
 }

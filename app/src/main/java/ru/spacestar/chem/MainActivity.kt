@@ -3,12 +3,13 @@ package ru.spacestar.chem
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.AnimationConstants
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -56,16 +57,14 @@ class MainActivity : ComponentActivity() {
                         AnimatedNavHost(
                             navController = navController,
                             startDestination = calculatorApi.route(),
-                            enterTransition = {
-                                slideIntoContainer(AnimatedContentScope.SlideDirection.Start) },
+                            enterTransition = { slideInHorizontally() },
                             exitTransition = {
                                 fadeOut(animationSpec = tween(
                                     durationMillis = 1,
                                     delayMillis = AnimationConstants.DefaultDurationMillis
                                 )) },
                             popEnterTransition = { EnterTransition.None },
-                            popExitTransition = {
-                                slideOutOfContainer(AnimatedContentScope.SlideDirection.End) },
+                            popExitTransition = { slideOutHorizontally() },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f)
