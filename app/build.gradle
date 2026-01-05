@@ -1,23 +1,19 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'com.google.dagger.hilt.android'
+apply {
+    from "$rootDir/gradle/module.gradle"
+    plugin 'kotlin-kapt'
+    plugin 'kotlin-parcelize'
+    plugin 'com.google.dagger.hilt.android'
+    plugin 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
     namespace 'ru.spacestar.chem'
-    compileSdk target_sdk
 
     defaultConfig {
         applicationId "ru.spacestar.chem"
-        minSdk min_sdk
-        targetSdk target_sdk
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -28,18 +24,8 @@ android {
             buildConfigField 'String', 'YAD_ID', '"demo-banner-yandex"'
         }
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
             buildConfigField 'String', 'YAD_ID', '"R-M-2416833-1"'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = '17'
     }
     buildFeatures {
         buildConfig true
