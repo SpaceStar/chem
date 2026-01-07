@@ -11,10 +11,11 @@ internal data class Reaction(
     val terms: String?
 ) {
     val displayReactions: List<String>
-        get() = prepare(value)
+        get() = prepare()
 
-    private fun prepare(value: String?): List<String> {
-        val terms = terms.orEmpty().split(Regex("""(?<=\d\) )|(?=(?<!^)\d+\) )"""))
+    private fun prepare(): List<String> {
+        val terms = terms?.ifEmpty { null }
+            ?.split(Regex("""(?<=\d\) )|(?=(?<!^)\d+\) )""")).orEmpty()
         val termsMap = when {
             terms.size > 1 -> buildMap {
                 for (i in terms.indices step 2) {
