@@ -4,6 +4,8 @@ apply {
     plugin 'kotlin-parcelize'
     plugin 'com.google.dagger.hilt.android'
     plugin 'org.jetbrains.kotlin.plugin.compose'
+    plugin 'com.google.gms.google-services'
+    plugin 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -70,6 +72,11 @@ dependencies {
     // ads
     implementation "com.yandex.android:mobileads:$y_ads"
     implementation "com.yandex.ads.mediation:mobileads-google:$g_ads"
+
+    // firebase
+    implementation platform("com.google.firebase:firebase-bom:$firebase")
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit"

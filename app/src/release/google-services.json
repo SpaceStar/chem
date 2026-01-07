@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396726005780",
+    "project_id": "chem-fe7a4",
+    "storage_bucket": "chem-fe7a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396726005780:android:37a53cbcc2d815f5ae3701",
+        "android_client_info": {
+          "package_name": "ru.spacestar.chem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbu0WSqxSYFjNNsAqrXziIRx-qAtsmFsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
