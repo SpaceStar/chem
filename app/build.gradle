@@ -68,12 +68,12 @@ dependencies {
     ksp "com.google.dagger:hilt-compiler:$hilt_version"
 
     // ads
-    implementation 'com.yandex.android:mobileads:7.18.1'
-    implementation 'com.yandex.ads.mediation:mobileads-google:23.6.0.10'
+    implementation "com.yandex.android:mobileads:$y_ads"
+    implementation "com.yandex.ads.mediation:mobileads-google:$g_ads"
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation platform("androidx.compose:compose-bom:$compose_version")
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
 
